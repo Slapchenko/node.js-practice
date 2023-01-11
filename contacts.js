@@ -16,7 +16,7 @@ const getAllContacts = async () => {
 
 const getContactById = async (contactId) => {
   const allContacts = await getAllContacts();
-  const contact = allContacts.find((value) => value.id === contactId);
+  const contact = allContacts.find(({ id }) => id === contactId);
 
   console.log(`Contact with ID ${contactId}: `);
   console.table(contact);
@@ -26,7 +26,7 @@ const getContactById = async (contactId) => {
 
 const removeContact = async (contactId) => {
   const allContacts = await getAllContacts();
-  const index = allContacts.findIndex((value) => value.id === contactId);
+  const index = allContacts.findIndex(({ id }) => id === contactId);
   const deletedContact = allContacts[index];
 
   if (index !== -1) {
