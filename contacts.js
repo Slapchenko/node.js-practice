@@ -1,48 +1,51 @@
 const fs = require("fs").promises;
 const path = require("path");
+const { v4: uuidv4 } = require("uuid");
 
-// TODO: to analyze in detail the methods of the path module.
-// const contactsPath = path.join(__dirname, 'contacts.json');
-const contactsPath = path.join(__dirname, 'db/contacts.json');
+const contactsPath = path.join(__dirname, "db/contacts.json");
 
-console.log('contactsPath', contactsPath);
-
-// TODO: задокументировать каждую функцию
 const listContacts = async () => {
-  const dataString = await fs.readFile(contactsPath, 'utf8');
+  const dataString = await fs.readFile(contactsPath, "utf8");
   const data = JSON.parse(dataString);
   return data;
-}
+};
 
 const getContactById = async (contactId) => {
-  const dataString = await fs.readFile(contactsPath, 'utf8');
-  const data = JSON.parse(dataString);
-  return data.filter(value => value.id === contactId);
-}
+  const allContacts = await listContacts();
+  const contact = allContacts.find((value) => value.id === contactId);
+  return contact ? contact : null;
+};
 
-function removeContact(contactId) {
-  // ...твой код
-}
+const removeContact = async (contactId) => {
+  const allContacts = await listContacts();
+  const index = allContacts.findIndex((value) => value.id === contactId);
+  const deletedContact = allContacts[index];
 
-function addContact(name, email, phone) {
-  // ...твой код
-}
+  if (index !== -1) {
+    allContacts.splice(index, 1);
+    await fs.writeFile(contactsPath, JSON.stringify(allContacts));
+  }
 
-const result = getContactById('1').then(data => console.log(data));
+  return deletedContact ? deletedContact : null;
+};
 
-// // TODO: задокументировать каждую функцию
-// function listContacts() {
-//   // ...твой код
-// }
+const addContact = async (name, email, phone) => {
+  const allContacts = await listContacts();
+  const newContact = {
+    id: uuidv4(),
+    name,
+    email,
+    phone,
+  };
 
-// function getContactById(contactId) {
-//   // ...твой код
-// }
+  allContacts.push(newContact);
 
-// function removeContact(contactId) {
-//   // ...твой код
-// }
+  await fs.writeFile(contactsPath, JSON.stringify(allContacts));
+};
 
-// function addContact(name, email, phone) {
-//   // ...твой код
-// }
+module.exports = {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+};
