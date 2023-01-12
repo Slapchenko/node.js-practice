@@ -15,7 +15,7 @@ const argv = program.opts();
 const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
     case "list":
-      await operations.getAllContacts();
+      await operations.listContacts();
       break;
 
     case "get":

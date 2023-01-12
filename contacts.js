@@ -8,10 +8,16 @@ const getAllContacts = async () => {
   const dataString = await fs.readFile(contactsPath, "utf8");
   const data = JSON.parse(dataString);
 
-  console.log(`Сontact list: `);
-  console.table(data);
-
   return data;
+};
+
+const listContacts = async () => {
+  const allContacts = await getAllContacts();
+
+  console.log(`Сontact list: `);
+  console.table(allContacts);
+
+  return allContacts ? allContacts : null;
 };
 
 const getContactById = async (contactId) => {
@@ -62,7 +68,7 @@ const addContact = async (name, email, phone) => {
 };
 
 module.exports = {
-  getAllContacts,
+  listContacts,
   getContactById,
   removeContact,
   addContact,
