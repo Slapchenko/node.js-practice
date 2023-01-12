@@ -40,9 +40,9 @@ const removeContact = async (contactId) => {
     await fs.writeFile(contactsPath, JSON.stringify(allContacts));
 
     console.log(
-      `The contact with ID ${contactId} has been removed from the contact list. Updated contact list: `
+      `The contact with ID ${contactId} has been removed from the contact list: `
     );
-    console.table(allContacts);
+    console.table(deletedContact);
   }
 
   return deletedContact ? deletedContact : null;
@@ -62,9 +62,9 @@ const addContact = async (name, email, phone) => {
   await fs.writeFile(contactsPath, JSON.stringify(allContacts));
 
   console.log(
-    `A contact with the name ${name} has been added to the contacts list. Updated contact list: `
+    `A contact with the name ${name} has been added to the contacts list: `
   );
-  console.table(allContacts);
+  console.table(newContact);
 };
 
 module.exports = {
