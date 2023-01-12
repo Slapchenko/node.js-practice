@@ -1,6 +1,6 @@
 # Homework #1 (Node.js)
 
-- [Get all contacts](https://monosnap.com/file/G2z9hugjEsUIU3JuurP8sMCREEvDaU "Get all contacts")
-- [Get contact by Id](https://monosnap.com/file/nyIz9h9JMbyyT3dU2APRgoBAhMEjiu "Get contact by Id")
-- [Add contact](https://monosnap.com/file/my2QVjqgdgDpTPd3L7xdsPHNZvJICc "Add contact")
-- [Remove contact](https://monosnap.com/file/ySusTcMH9rknG6leuK6pE44c8CImaP "Remove contact")
+- [Get all contacts](https://monosnap.com/direct/umH9v2xCgRErYeKSLWm7akyR8GT17c "Get all contacts")
+- [Get contact by Id](https://monosnap.com/direct/DcLnFtEoaXUYYOfN6Qzoh8aKI5hEks "Get contact by Id")
+- [Add contact](https://monosnap.com/direct/zkarTHC6fZFcoAE5X5IPv74pdXioqF "Add contact")
+- [Remove contact](https://monosnap.com/direct/CpVaRoKygyNPLpaZpcMJkK6dbHLG6C "Remove contact")
