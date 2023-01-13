@@ -16,8 +16,6 @@ const listContacts = async () => {
 
   console.log(`Сontact list: `);
   console.table(allContacts);
-
-  return allContacts ? allContacts : null;
 };
 
 const getContactById = async (contactId) => {
@@ -26,8 +24,6 @@ const getContactById = async (contactId) => {
 
   console.log(`Contact with ID ${contactId}: `);
   console.table(contact);
-
-  return contact ? contact : null;
 };
 
 const removeContact = async (contactId) => {
@@ -44,8 +40,6 @@ const removeContact = async (contactId) => {
     );
     console.table(deletedContact);
   }
-
-  return deletedContact ? deletedContact : null;
 };
 
 const addContact = async (name, email, phone) => {
