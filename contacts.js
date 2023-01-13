@@ -9,7 +9,7 @@ const listContacts = async () => {
   const contactList = JSON.parse(data);
 
   console.log(`Сontact list: `);
-  console.table(allContacts);
+  console.table(contactList);
 };
 
 const getContactById = async (contactId) => {
