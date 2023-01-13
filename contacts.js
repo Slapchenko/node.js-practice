@@ -9,9 +9,7 @@ const listContacts = async () => {
   const contactList = JSON.parse(data);
 
   console.log(`Сontact list: `);
-  console.table(contactList);
-
-  return contactList ? contactList : null;
+  console.table(allContacts);
 };
 
 const getContactById = async (contactId) => {
@@ -21,8 +19,6 @@ const getContactById = async (contactId) => {
 
   console.log(`Contact with ID ${contactId}: `);
   console.table(contact);
-
-  return contact ? contact : null;
 };
 
 const removeContact = async (contactId) => {
@@ -40,8 +36,6 @@ const removeContact = async (contactId) => {
     );
     console.table(deletedContact);
   }
-
-  return deletedContact ? deletedContact : null;
 };
 
 const addContact = async (name, email, phone) => {
