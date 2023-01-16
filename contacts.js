@@ -4,17 +4,22 @@ const { v4: uuidv4 } = require("uuid");
 
 const contactsPath = path.join(__dirname, "db/contacts.json");
 
+const getAllContacts = async () => {
+  const dataString = await fs.readFile(contactsPath, "utf8");
+  const data = JSON.parse(dataString);
+
+  return data;
+};
+
 const listContacts = async () => {
-  const data = await fs.readFile(contactsPath, "utf8");
-  const contactList = JSON.parse(data);
+  const contactList = await getAllContacts();
 
   console.log(`Сontact list: `);
   console.table(contactList);
 };
 
 const getContactById = async (contactId) => {
-  const data = await fs.readFile(contactsPath, "utf8");
-  const contactList = JSON.parse(data);
+  const contactList = await getAllContacts();
   const contact = contactList.find(({ id }) => id === contactId);
 
   console.log(`Contact with ID ${contactId}: `);
@@ -22,8 +27,7 @@ const getContactById = async (contactId) => {
 };
 
 const removeContact = async (contactId) => {
-  const data = await fs.readFile(contactsPath, "utf8");
-  const contactList = JSON.parse(data);
+  const contactList = await getAllContacts();
   const index = contactList.findIndex(({ id }) => id === contactId);
   const deletedContact = contactList[index];
 
@@ -39,8 +43,7 @@ const removeContact = async (contactId) => {
 };
 
 const addContact = async (name, email, phone) => {
-  const data = await fs.readFile(contactsPath, "utf8");
-  const contactList = JSON.parse(data);
+  const contactList = await getAllContacts();
   const newContact = {
     id: uuidv4(),
     name,
